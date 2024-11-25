@@ -8,3 +8,5 @@ Because of CORS, if you need to run the app in a browser, you also need to run t
 cd server/psychologist-bff
 bun run dev
 ```
+
+Edit the `.env` file to target either the proxied URL or default URL.
