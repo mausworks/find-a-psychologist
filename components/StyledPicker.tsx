@@ -1,5 +1,5 @@
 import { Picker } from "@react-native-picker/picker";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Platform } from "react-native";
 
 export type StyledPickerProps<V extends string | number> = {
   entries: Record<string, V>;
@@ -30,6 +30,7 @@ export default function StyledPicker<V extends string | number>({
         selectedValue={value}
         onValueChange={onValueChange}
         style={styles.picker}
+        itemStyle={styles.itemStyle}
       >
         {initial && <Picker.Item label={initial} value={initialValue} />}
         {Object.entries(entries).map(([label, value]) => (
@@ -47,13 +48,22 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderWidth: 1,
     height: "100%",
+    maxHeight: 40,
   },
   picker: {
     backgroundColor: "transparent",
     borderColor: "transparent",
     borderWidth: 0,
     padding: 10,
-    borderRightWidth: 12,
+    borderRightWidth: Platform.OS === "ios" ? 0 : 12,
     height: "100%",
+  },
+  itemStyle: {
+    fontSize: 14,
+    padding: 0,
+    marginTop: -10,
+    marginLeft: "-10%",
+    width: "120%",
+    maxHeight: 40,
   },
 });
