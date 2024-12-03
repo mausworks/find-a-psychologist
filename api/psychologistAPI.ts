@@ -97,8 +97,11 @@ const psychologistAPI = {
         }),
       {
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          accept: "application/json",
+          applanguage: "en",
+          countryid: "1",
+          countryiso2code: "SE",
+          languageid: "1",
         },
       }
     ).then((res) => res.json()),
