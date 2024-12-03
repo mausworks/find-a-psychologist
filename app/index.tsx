@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { useFetchPsychologists } from "@/hooks/useFetchPsychologists";
 import StyledPicker from "@/components/StyledPicker";
 import { LANGUAGE_OPTIONS, SPECIALITY_OPTIONS } from "@/api/psychologistAPI";
@@ -15,7 +15,10 @@ export default function HomeScreen() {
   });
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.scrollContent}
+    >
       <View style={styles.content}>
         <View style={styles.filterCard}>
           <Text style={styles.heading}>Hitta en psykolog</Text>
@@ -57,16 +60,16 @@ export default function HomeScreen() {
           )}
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
     padding: 20,
-    overflow: "scroll",
+  },
+  scrollContent: {
+    alignItems: "center",
   },
   content: {
     width: "100%",
